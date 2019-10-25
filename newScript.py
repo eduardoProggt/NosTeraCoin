@@ -23,7 +23,7 @@ class Owner:
 		print(self.pseudonym + " owns " + str(self.money) + " Coins.")
 class Hasher:
 	def hashMessage(msg):
-		return hashlib.sha224(bytes(msg, 'utf-8')).hexdigest()
+		return hashlib.sha256(bytes(msg, 'utf-8')).hexdigest()
 
 class Blockchain:
 	def __init__(self):
@@ -47,12 +47,12 @@ class Block:
 		self.hashOld = hashOld
 	def toString(self):
 		emptyspace = self.createEmptySpaceString(self.message)
-		string = "----------------------------||----------------------------\n"
+		string = "--------------------------------||--------------------------------\n"
 		string += "|"+self.message+emptyspace + "|\n|" + self.hashOld+"|"
-		string += "\n----------------------------||----------------------------"
+		string += "\n--------------------------------||--------------------------------"
 		return string
 	def createEmptySpaceString(self,message):
-		leerspaces = 56 - len(message)
+		leerspaces = 64 - len(message)
 		ret = ""
 		for letter in range(0,leerspaces):
 			ret+=" "
