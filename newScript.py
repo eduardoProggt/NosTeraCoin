@@ -46,10 +46,20 @@ class Block:
 		self.message = message
 		self.hashOld = hashOld
 	def toString(self):
-		emptyspace = self.createEmptySpaceString(self.message)
+		emptyspace = self.createEmptySpaceString("Plntxt:"+self.message)
 		string = "--------------------------------||--------------------------------\n"
-		string += "|"+self.message+emptyspace + "|\n|" + self.hashOld+"|"
-		string += "\n--------------------------------||--------------------------------"
+		string += "|Plntxt:"+self.message+emptyspace + "|\n"
+		string +="|"+self.hashOld+"|\n"
+
+		ausgedachteSignatur = "fbf798374ad9e7f6323f"
+		emptyspace = self.createEmptySpaceString("Signature:"+ausgedachteSignatur)
+		string += "|Signature:"+ausgedachteSignatur +emptyspace+ "|\n" 
+
+		ausgedachterPublicKey = "6323ffbf79d9e7f8374a"
+		emptyspace = self.createEmptySpaceString("PublicKey:"+ausgedachterPublicKey)
+		string += "|PublicKey:"+ausgedachterPublicKey + emptyspace+"|\n" 
+
+		string += "--------------------------------||--------------------------------"
 		return string
 	def createEmptySpaceString(self,message):
 		leerspaces = 64 - len(message)
